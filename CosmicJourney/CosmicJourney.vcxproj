@@ -88,10 +88,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>E:\Repos\CosmicJourney\Libraries\OpenGL\glfw\include;E:\Repos\CosmicJourney\Libraries\OpenGL\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>E:\Repos\CosmicJourney\Libraries\OpenGL\glfw\lib-vc2017;E:\Repos\CosmicJourney\Libraries\OpenGL\glew\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
