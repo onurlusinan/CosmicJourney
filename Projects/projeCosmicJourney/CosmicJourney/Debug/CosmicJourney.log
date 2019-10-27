@@ -1,0 +1,3 @@
+﻿  main.cpp
+d:\mutku\sabanci\lecture\cs405\game project\projects\projecosmicjourney\cosmicjourney\main.cpp(86): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  CosmicJourney.vcxproj -> D:\MUTKU\SABANCI\LECTURE\cs405\Game Project\Projects\projeCosmicJourney\Debug\CosmicJourney.exe
