@@ -1,3 +1,7 @@
-﻿  main.cpp
-d:\mutku\sabanci\lecture\cs405\game project\projects\projecosmicjourney\cosmicjourney\main.cpp(86): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-  CosmicJourney.vcxproj -> D:\MUTKU\SABANCI\LECTURE\cs405\Game Project\Projects\projeCosmicJourney\Debug\CosmicJourney.exe
+﻿  Shader.cpp
+d:\mutku\sabanci\lecture\cs405\game project\projects\projecosmicjourney\cosmicjourney\shader.cpp(202): warning C4244: 'argument': conversion from 'GLuint' to 'GLfloat', possible loss of data
+d:\mutku\sabanci\lecture\cs405\game project\projects\projecosmicjourney\cosmicjourney\shader.cpp(201): warning C4244: 'argument': conversion from 'GLuint' to 'GLfloat', possible loss of data
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+Texture.obj : error LNK2019: unresolved external symbol _stbi_load referenced in function "public: void __thiscall Texture::LoadTexture(void)" (?LoadTexture@Texture@@QAEXXZ)
+Texture.obj : error LNK2019: unresolved external symbol _stbi_image_free referenced in function "public: void __thiscall Texture::LoadTexture(void)" (?LoadTexture@Texture@@QAEXXZ)
+D:\MUTKU\SABANCI\LECTURE\cs405\Game Project\Projects\projeCosmicJourney\Debug\CosmicJourney.exe : fatal error LNK1120: 2 unresolved externals

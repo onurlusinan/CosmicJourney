@@ -1,0 +1,27 @@
+﻿Build started 10/30/2019 4:39:45 PM.
+     1>Project "C:\Users\Utku\Documents\Visual Studio 2012\OpenGl\OPENGLudemydeneme\OPENGLudemydeneme\OPENGLudemydeneme.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\mutkusoftware\visual studio 2012\VC\bin\CL.exe /c /I"C:\Users\Utku\Documents\Visual Studio 2012\OpenGl\OPENGLudemydeneme\/../../External Libs\GLEW\include" /I"C:\Users\Utku\Documents\Visual Studio 2012\OpenGl\OPENGLudemydeneme\/../../External Libs\GLFW\include" /I"C:\Users\Utku\Documents\Visual Studio 2012\OpenGl\OPENGLudemydeneme\/../../External Libs\GLM" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Shader.cpp
+         Shader.cpp
+     1>Shader.cpp(202): warning C4244: 'argument' : conversion from 'GLuint' to 'GLfloat', possible loss of data
+       Link:
+         D:\mutkusoftware\visual studio 2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Utku\Documents\Visual Studio 2012\OpenGl\OPENGLudemydeneme\Release\OPENGLudemydeneme.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Users\Utku\Documents\Visual Studio 2012\OpenGl\OPENGLudemydeneme\/../../External Libs\GLEW\lib\Release\Win32" /LIBPATH:"C:\Users\Utku\Documents\Visual Studio 2012\OpenGl\OPENGLudemydeneme\/../../External Libs\GLFW\lib-vc2012" opengl32.lib glew32.lib glfw3.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Utku\Documents\Visual Studio 2012\OpenGl\OPENGLudemydeneme\Release\OPENGLudemydeneme.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Utku\Documents\Visual Studio 2012\OpenGl\OPENGLudemydeneme\Release\OPENGLudemydeneme.lib" /MACHINE:X86 /SAFESEH Release\Camera.obj
+         Release\DirectionalLight.obj
+         Release\Light.obj
+         Release\main.obj
+         Release\Material.obj
+         Release\Mesh.obj
+         Release\PointLight.obj
+         Release\Shader.obj
+         Release\SpotLight.obj
+         Release\Texture.obj
+         Release\Window.obj
+         Generating code
+     1>c:\users\utku\documents\visual studio 2012\opengl\opengludemydeneme\opengludemydeneme\window.cpp(80): warning C4715: 'Window::Initialise' : not all control paths return a value
+         Finished generating code
+         OPENGLudemydeneme.vcxproj -> C:\Users\Utku\Documents\Visual Studio 2012\OpenGl\OPENGLudemydeneme\Release\OPENGLudemydeneme.exe
+     1>Done Building Project "C:\Users\Utku\Documents\Visual Studio 2012\OpenGl\OPENGLudemydeneme\OPENGLudemydeneme\OPENGLudemydeneme.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:05.60
