@@ -46,12 +46,18 @@ Camera camera;
 Texture brickTexture;
 Texture dirtTexture;
 Texture plainTexture;
+Texture rockTexture;
 
 Material shinyMaterial;
 Material dullMaterial;
 
 Model xwing;
 Model blackhawk;
+Model asteroid;
+
+
+GLfloat deltaTime = 0.0f;
+GLfloat lastTime = 0.0f;
 
 DirectionalLight mainLight;
 PointLight pointLights[MAX_POINT_LIGHTS];
@@ -62,10 +68,14 @@ Skybox skybox;
 unsigned int pointLightCount = 0;
 unsigned int spotLightCount = 0;
 
-GLfloat deltaTime = 0.0f;
-GLfloat lastTime = 0.0f;
 
 GLfloat blackhawkAngle = 0.0f;
+GLfloat asteriodAngle = GLfloat(rand() % 100 - 60);
+GLfloat ran_x = GLfloat(rand() % 100 - 60);
+GLfloat ran_y = GLfloat(rand() % 80 - 40);
+GLfloat ran_sp = GLfloat(rand() % 5 - 2);
+GLfloat move_hor = 0.001f;
+GLfloat move_ver = 0.001f;
 
 // Vertex Shader
 static const char* vShader = "Shaders/shader.vert";
@@ -158,7 +168,7 @@ void CreateShaders()
 void RenderScene()
 {
 	glm::mat4 model;
-
+/*
 	model = glm::translate(model, glm::vec3(0.0f, 0.0f, -2.5f));
 	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 	brickTexture.UseTexture();
@@ -177,16 +187,41 @@ void RenderScene()
 	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 	dirtTexture.UseTexture();
 	shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
-	meshList[2]->RenderMesh();
+	meshList[2]->RenderMesh();*/
+
+
+	bool * xkeys = mainWindow.getsKeys();
+
+
+	if (xkeys[GLFW_KEY_W])
+	{
+		move_hor += 0.005f;
+	}
+	if (xkeys[GLFW_KEY_S])
+	{
+		move_hor -= 0.005f;
+	}
+	if (xkeys[GLFW_KEY_A])
+	{
+		move_ver += 0.005f;
+	}
+	if (xkeys[GLFW_KEY_D])
+	{
+		move_ver -= 0.005f;
+	}
 
 	model = glm::mat4();
-	model = glm::translate(model, glm::vec3(-7.0f, 0.0f, 10.0f));
+	model = glm::translate(model, glm::vec3(-7.0f  + move_ver , 0.0f + move_hor, 10.0f));
 	model = glm::scale(model, glm::vec3(0.006f, 0.006f, 0.006f));
 	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 	shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
 	xwing.RenderModel();
-
-	blackhawkAngle += 0.1f;
+	
+	/*if (xkeys[GLFW_KEY_Z])
+	{
+		blackhawkAngle += 0.1f;
+	}
+	
 	if (blackhawkAngle > 360.0f)
 	{
 		blackhawkAngle = 0.1f;
@@ -200,7 +235,64 @@ void RenderScene()
 	model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
 	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 	shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
-	blackhawk.RenderModel();
+	blackhawk.RenderModel();*/
+	
+	asteriodAngle -= 0.02f;
+	if (asteriodAngle < -2.0f )
+	{
+		asteriodAngle = 100.0f;
+		ran_x = GLfloat(rand() % 100 - 60);
+		ran_y = GLfloat(rand() % 80 - 40);
+		ran_sp = GLfloat(rand() % 5 - 0);
+	}
+
+	
+	
+
+	model = glm::mat4();
+	model = glm::translate(model, glm::vec3(5.0f * ran_x* 0.15f, 2.0f * ran_y * 0.15f, asteriodAngle * ran_sp));
+	model = glm::rotate(model, -asteriodAngle* 2.0f * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+	model = glm::scale(model, glm::vec3(0.006f, 0.006f, 0.006f));
+	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+	rockTexture.UseTexture();
+	dullMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
+	asteroid.RenderModel();
+	
+	model = glm::mat4();
+	model = glm::translate(model, glm::vec3(2.0f  * ran_x* 0.15f, -1.0f * ran_y * 0.15f, asteriodAngle * 1.5f* ran_sp));
+	model = glm::rotate(model, -asteriodAngle * 3.0f * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+	model = glm::scale(model, glm::vec3(0.006f, 0.006f, 0.006f));
+	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+	rockTexture.UseTexture();
+	dullMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
+	asteroid.RenderModel();
+
+	model = glm::mat4();
+	model = glm::translate(model, glm::vec3(3.0f  * ran_x* 0.15f, -2.0f * ran_y * 0.15f, asteriodAngle * 0.5f* ran_sp));
+	model = glm::rotate(model, -asteriodAngle * 1.0f * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+	model = glm::scale(model, glm::vec3(0.006f, 0.006f, 0.006f));
+	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+	rockTexture.UseTexture();
+	dullMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
+	asteroid.RenderModel();
+
+	model = glm::mat4();
+	model = glm::translate(model, glm::vec3(-5.0f  * ran_x* 0.15f, 1.0f * ran_y * 0.15f, asteriodAngle * 3.0f * ran_sp));
+	model = glm::rotate(model, -asteriodAngle * 1.0f * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+	model = glm::scale(model, glm::vec3(0.006f, 0.006f, 0.006f));
+	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+	rockTexture.UseTexture();
+	dullMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
+	asteroid.RenderModel();
+
+	model = glm::mat4();
+	model = glm::translate(model, glm::vec3(-2.0f * ran_x* 0.15f, +1.0f * ran_y * 0.15f, asteriodAngle * 2.0f * ran_sp));
+	model = glm::rotate(model, -asteriodAngle * 1.0f * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+	model = glm::scale(model, glm::vec3(0.006f, 0.006f, 0.006f));
+	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+	rockTexture.UseTexture();
+	dullMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
+	asteroid.RenderModel();
 }
 
 void DirectionalShadowMapPass(DirectionalLight* light)
@@ -295,7 +387,7 @@ int main()
 	CreateObjects();
 	CreateShaders();
 
-	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 5.0f, 0.5f);
+	camera = Camera(glm::vec3(1.5f, 1.0f, -8.0f), glm::vec3(0.0f, 1.0f, 0.0f), 90.0f, 0.0f, 5.0f, 0.0f);
 
 	brickTexture = Texture("Textures/brick.png");
 	brickTexture.LoadTextureA();
@@ -303,6 +395,9 @@ int main()
 	dirtTexture.LoadTextureA();
 	plainTexture = Texture("Textures/plain.png");
 	plainTexture.LoadTextureA();
+	rockTexture = Texture("Textures/rock.png");
+	rockTexture.LoadTextureA();
+	
 
 	shinyMaterial = Material(4.0f, 256);
 	dullMaterial = Material(0.3f, 4);
@@ -312,6 +407,9 @@ int main()
 
 	blackhawk = Model();
 	blackhawk.LoadModel("Models/uh60.obj");
+
+	asteroid = Model();
+	asteroid.LoadModel("Models/asteroid.obj");
 
 	mainLight = DirectionalLight(2048, 2048,
 								1.0f, 0.53f, 0.3f, 
@@ -378,7 +476,7 @@ int main()
 		glfwPollEvents();
 
 		camera.keyControl(mainWindow.getsKeys(), deltaTime);
-		camera.mouseControl(mainWindow.getXChange(), mainWindow.getYChange());
+		//camera.mouseControl(mainWindow.getXChange(), mainWindow.getYChange());
 
 		if (mainWindow.getsKeys()[GLFW_KEY_L])
 		{

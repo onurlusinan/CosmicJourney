@@ -141,6 +141,29 @@ void Model::ClearModel()
 	}
 }
 
+void Model::keyControl(bool * keys, GLfloat deltaTime, glm::vec3 pos_xwing, GLfloat velo_xwing)
+{
+	if (keys[GLFW_KEY_W])
+	{
+		pos_xwing += pos_xwing.y * velo_xwing;
+	}
+
+	if (keys[GLFW_KEY_S])
+	{
+		pos_xwing -= pos_xwing.y * velo_xwing;
+	}
+
+	if (keys[GLFW_KEY_A])
+	{
+		pos_xwing -= pos_xwing.x * velo_xwing;
+	}
+
+	if (keys[GLFW_KEY_D])
+	{
+		pos_xwing += pos_xwing.x * velo_xwing;
+	}
+}
+
 Model::~Model()
 {
 }
